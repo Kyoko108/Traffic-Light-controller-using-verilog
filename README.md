@@ -44,24 +44,8 @@ RED → GREEN → YELLOW → RED
 
 ## FSM State Diagram
 
-```text
-          10 clocks
-    +------------------+
-    |                  v
-  +-----+          +-------+
-  | RED |--------->| GREEN |
-  +-----+          +-------+
-    ^                  |
-    |                  |
-    |                  | 10 clocks
-    |                  v
-  +--------+<----------+
-  | YELLOW |
-  +--------+
-      |
-      |
-      +---- 3 clocks ----+
-```
+<img width="1254" height="1254" alt="image" src="https://github.com/user-attachments/assets/2cbeb4ef-b216-4af4-b323-29ee96de01f1" />
+
 
 ---
 
