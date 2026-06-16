@@ -1,4 +1,101 @@
 # Traffic Light
-Verilog codes for practice and conceptualisation 
+# Traffic Light Controller using Verilog
+
+## Overview
+
+This project implements a finite state machine (FSM)-based Traffic Light Controller in Verilog HDL. The controller cycles through three traffic light states:
+
+* RED
+* GREEN
+* YELLOW
+
+The design follows the standard three-process FSM architecture:
+
+1. State Register
+2. Next-State Logic
+3. Output Logic
+
+This approach improves readability, modularity, and synthesizability, making it suitable for digital design and VLSI learning.
+
+---
+
+## State Timing
+
+| State  | Duration        |
+| ------ | --------------- |
+| RED    | 10 Clock Cycles |
+| GREEN  | 10 Clock Cycles |
+| YELLOW | 3 Clock Cycles  |
+
+The sequence repeats indefinitely:
+
+RED → GREEN → YELLOW → RED
+
+---
+
+## Files
+
+| File               | Description                                                |
+| ------------------ | ---------------------------------------------------------- |
+| traffic_light.v    | Verilog RTL implementation of the Traffic Light Controller |
+| traffic_light_tb.v | Testbench used for simulation and verification             |
+
+---
+
+## FSM State Diagram
+
+```text
+          10 clocks
+    +------------------+
+    |                  v
+  +-----+          +-------+
+  | RED |--------->| GREEN |
+  +-----+          +-------+
+    ^                  |
+    |                  |
+    |                  | 10 clocks
+    |                  v
+  +--------+<----------+
+  | YELLOW |
+  +--------+
+      |
+      |
+      +---- 3 clocks ----+
+```
+
+---
+
+## Simulation
+
+The design was simulated using Icarus Verilog.
+
+### Compilation
+
+```cmd
+iverilog -o traffic.exe traffic_light.v traffic_light_tb.v
+```
+
+### Execution
+
+```cmd
+vvp traffic.exe
+```
+
+---
+
+## Learning Objectives
+
+* Finite State Machine (FSM) Design
+* Verilog HDL Coding
+* Combinational and Sequential Logic Separation
+* Testbench Development
+* Functional Verification using Simulation
+
+---
+
+## Below is the Output
+
+(Add your simulation screenshot or terminal output image here.)
+ 
 <img width="826" height="165" alt="image" src="https://github.com/user-attachments/assets/78c70d6b-bc8e-42a4-b412-23339293b99e" />
 
