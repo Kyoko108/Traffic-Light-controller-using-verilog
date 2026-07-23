@@ -48,6 +48,7 @@ RED → GREEN → YELLOW → RED
 <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/2cbeb4ef-b216-4af4-b323-29ee96de01f1" />
 <p><strong>State Diagram for this particular Traffic Controller FSM </strong></p>
 </div>
+
 ---
 
 ## Simulation
@@ -112,8 +113,7 @@ Expected result: `RESULT: PASS -- all safety/liveness/ordering checks held, all 
 </div>
 
 
- 
----
+ ---
  
 ## Learning Objectives
  
@@ -123,6 +123,7 @@ Expected result: `RESULT: PASS -- all safety/liveness/ordering checks held, all 
 - Testbench Development
 - Functional Verification using Simulation
 - Assertion-based verification and functional coverage
+  
 ---
 
 ## Below is the Output
@@ -132,7 +133,4 @@ Expected result: `RESULT: PASS -- all safety/liveness/ordering checks held, all 
 <p><strong>Output of our Traffic Controller FSM </strong></p>
 </div>
 
-
- 
-
- 
+---
