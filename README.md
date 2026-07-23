@@ -45,7 +45,7 @@ RED → GREEN → YELLOW → RED
 ## FSM State Diagram
 
 <div align = "center" >
-<img width="1254" height="1254" alt="image" src="https://github.com/user-attachments/assets/2cbeb4ef-b216-4af4-b323-29ee96de01f1" />
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/2cbeb4ef-b216-4af4-b323-29ee96de01f1" />
 <p><strong>State Diagram for this particular Traffic Controller FSM </strong></p>
 </div>
 ---
