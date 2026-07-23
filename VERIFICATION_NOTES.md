@@ -63,6 +63,7 @@ iverilog -g2012 -gassertions -o tlc_tb.vvp traffic_light.v traffic_light_verif_t
 vvp tlc_tb.vvp
 ```
 Expected: `RESULT: PASS -- all safety/liveness/ordering checks held, all coverage bins hit`
-Output on terminal : 
+
+Output obtained at  terminal : 
 <img width="611" height="230" alt="Screenshot 2026-07-23 123453" src="https://github.com/user-attachments/assets/11dd4e69-5c80-4a13-8e98-c5f6f7576670" />
 
