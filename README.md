@@ -51,34 +51,6 @@ RED → GREEN → YELLOW → RED
 
 ---
 
-## Simulation
-
-The design was simulated using Icarus Verilog.
-
-### Compilation
-
-```cmd
-iverilog -o traffic.exe traffic_light.v traffic_light_tb.v
-```
-
-### Execution
-
-```cmd
-vvp traffic.exe
-```
-
----
-
-## Learning Objectives
-
-* Finite State Machine (FSM) Design
-* Verilog HDL Coding
-* Combinational and Sequential Logic Separation
-* Testbench Development
-* Functional Verification using Simulation
-
----
-
 ## Verification
  
 In addition to the basic testbench above, this repo includes a self-checking
@@ -115,15 +87,23 @@ Expected result: `RESULT: PASS -- all safety/liveness/ordering checks held, all 
 
  ---
  
-## Learning Objectives
- 
-- Finite State Machine (FSM) Design
-- Verilog HDL Coding
-- Combinational and Sequential Logic Separation
-- Testbench Development
-- Functional Verification using Simulation
-- Assertion-based verification and functional coverage
-  
+
+## Simulation
+
+The design was simulated using Icarus Verilog.
+
+### Compilation
+
+```cmd
+iverilog -o traffic.exe traffic_light.v traffic_light_tb.v
+```
+
+### Execution
+
+```cmd
+vvp traffic.exe
+```
+
 ---
 
 ## Below is the Output
@@ -132,5 +112,15 @@ Expected result: `RESULT: PASS -- all safety/liveness/ordering checks held, all 
 <img width="826" height="165" alt="608385835-78c70d6b-bc8e-42a4-b412-23339293b99e" src="https://github.com/user-attachments/assets/e5f9005b-a5d7-4288-bb04-a06a1370c9fe" />
 <p><strong>Output of our Traffic Controller FSM </strong></p>
 </div>
+
+---
+
+## Learning Objectives
+
+* Finite State Machine (FSM) Design
+* Verilog HDL Coding
+* Combinational and Sequential Logic Separation
+* Testbench Development
+* Functional Verification using Simulation
 
 ---
