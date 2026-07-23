@@ -110,9 +110,7 @@ iverilog -o traffic.exe traffic_light.v traffic_light_tb.v
 vvp traffic.exe
 ```
 
----
-
-## Below is the Output
+### Output
 
 <div align ="center" >
 <img width="826" height="165" alt="608385835-78c70d6b-bc8e-42a4-b412-23339293b99e" src="https://github.com/user-attachments/assets/e5f9005b-a5d7-4288-bb04-a06a1370c9fe" />
