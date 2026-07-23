@@ -1,5 +1,7 @@
 <div align = "center">
+ 
 # Traffic Light Controller using Verilog
+
 </div>
 
 ## Overview
