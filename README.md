@@ -1,4 +1,4 @@
-<div align = "center" >
+<div align = "center">
 # Traffic Light Controller using Verilog
 </div>
 
