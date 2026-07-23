@@ -1,5 +1,6 @@
-# Traffic Light
+<div align = "center" >
 # Traffic Light Controller using Verilog
+</div>
 
 ## Overview
 
@@ -80,7 +81,7 @@ vvp tlc_tb.vvp
 Expected result: `RESULT: PASS -- all safety/liveness/ordering checks held, all coverage bins hit` 
 
 <div align="center">
-<img width="819" height="327" alt="Verification Output" src="https://github.com/user-attachments/assets/3543027e-e13f-4e3f-86ed-21b4ff4ddbf1" />
+ <img width="619" height="227" alt="Screenshot 2026-07-23 130218" src="https://github.com/user-attachments/assets/1c5fd5b0-1591-4683-ac17-d3d9419770de" />
 <p><strong>Verification testbench output: all safety/liveness/ordering checks passed, all coverage bins hit</strong></p>
 </div>
 
