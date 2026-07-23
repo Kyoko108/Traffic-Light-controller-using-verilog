@@ -104,7 +104,9 @@ vvp tlc_tb.vvp
  
 ### Verification Output
 Expected result: `RESULT: PASS -- all safety/liveness/ordering checks held, all coverage bins hit` 
-![Verification output](<img width="611" height="230" alt="Screenshot 2026-07-23 123453" src="https://github.com/user-attachments/assets/774cb836-ae00-4bc5-83e5-251dbe1f9233" />)
+
+![Verification output](<img width="611" height="230" alt="Screenshot 2026-07-23 123453" src="https://github.com/user-attachments/assets/eda02e23-84e5-467f-8899-eaad6fb9a25d" />
+)
  
 
  
