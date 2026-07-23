@@ -44,9 +44,10 @@ RED → GREEN → YELLOW → RED
 
 ## FSM State Diagram
 
+<div align = "center" >
 <img width="1254" height="1254" alt="image" src="https://github.com/user-attachments/assets/2cbeb4ef-b216-4af4-b323-29ee96de01f1" />
-
-
+<p><strong>State Diagram for this particular Traffic Controller FSM </strong></p>
+</div>
 ---
 
 ## Simulation
@@ -105,10 +106,11 @@ vvp tlc_tb.vvp
 ### Verification Output
 Expected result: `RESULT: PASS -- all safety/liveness/ordering checks held, all coverage bins hit` 
 
+<div align="center">
 <img width="619" height="227" alt="Verification Output" src="https://github.com/user-attachments/assets/3543027e-e13f-4e3f-86ed-21b4ff4ddbf1" />
-<p><em>Verification testbench output: all safety/liveness/ordering checks passed, all coverage bins hit</em></p>
+<p><strong>Verification testbench output: all safety/liveness/ordering checks passed, all coverage bins hit</strong></p>
+</div>
 
- [Verification output]
 
  
 ---
@@ -124,7 +126,11 @@ Expected result: `RESULT: PASS -- all safety/liveness/ordering checks held, all 
 ---
 
 ## Below is the Output
+
+<div align ="center" >
 <img width="826" height="165" alt="image" src="https://github.com/user-attachments/assets/78c70d6b-bc8e-42a4-b412-23339293b99e" />
+<p><strong>Output of our Traffic Controller FSM </strong></p>
+</div>
 
 
  
