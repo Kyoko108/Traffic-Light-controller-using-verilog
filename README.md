@@ -2,6 +2,9 @@
  
 # Traffic Light Controller using Verilog
 
+---
+---
+
 </div>
 
 ## Overview
