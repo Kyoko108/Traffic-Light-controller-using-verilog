@@ -77,6 +77,54 @@ vvp traffic.exe
 
 ---
 
+## Verification
+ 
+In addition to the basic testbench above, this repo includes a self-checking
+verification environment (`traffic_light_verif_tb.sv`) that goes beyond
+simulate-and-eyeball-the-waveform:
+ 
+- Safety checks: mutual exclusion (never more than one light on at once),
+  reset behavior, output-to-state consistency
+- Liveness/ordering checks: exact state durations (RED=10, GREEN=10,
+  YELLOW=3 cycles) and legal RED→GREEN→YELLOW→RED sequencing only
+- Directed + randomized reset injection, checking recovery to RED from any state
+- Functional coverage tracking (manual bins, since this toolchain's Icarus
+  Verilog build has no native `covergroup` support), with a printed report
+Full scope notes, limitations, and a record of bugs found while building
+this (including a testbench sampling race and a broken tool primitive
+caught before being mistaken for a DUT bug) are documented in
+[VERIFICATION_NOTES.md](VERIFICATION_NOTES.md).
+ 
+### Run it
+ 
+```
+iverilog -g2012 -gassertions -o tlc_tb.vvp traffic_light.v traffic_light_verif_tb.sv
+vvp tlc_tb.vvp
+```
+ 
+### Verification Output
+ 
+![Verification output](<img width="611" height="230" alt="Screenshot 2026-07-23 123453" src="https://github.com/user-attachments/assets/774cb836-ae00-4bc5-83e5-251dbe1f9233" />
+)
+ 
+Expected result: `RESULT: PASS -- all safety/liveness/ordering checks held, all coverage bins hit`
+ 
+---
+ 
+## Learning Objectives
+ 
+- Finite State Machine (FSM) Design
+- Verilog HDL Coding
+- Combinational and Sequential Logic Separation
+- Testbench Development
+- Functional Verification using Simulation
+- Assertion-based verification and functional coverage
+---
+
 ## Below is the Output
 <img width="826" height="165" alt="image" src="https://github.com/user-attachments/assets/78c70d6b-bc8e-42a4-b412-23339293b99e" />
 
+
+ 
+
+ 
