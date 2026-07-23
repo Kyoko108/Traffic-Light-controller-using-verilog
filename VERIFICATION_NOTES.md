@@ -66,5 +66,6 @@ Expected: `RESULT: PASS -- all safety/liveness/ordering checks held, all coverag
 
 Output obtained at  terminal : 
 
-<img width="611" height="230" alt="Screenshot 2026-07-23 123453" src="https://github.com/user-attachments/assets/11dd4e69-5c80-4a13-8e98-c5f6f7576670" />
+<img width="1237" height="453" alt="image" src="https://github.com/user-attachments/assets/62c83a13-1a9c-45a1-af1d-0b6b3e510e01" />
+
 
