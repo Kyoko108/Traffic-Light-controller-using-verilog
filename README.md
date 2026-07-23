@@ -105,9 +105,8 @@ vvp tlc_tb.vvp
 ### Verification Output
 Expected result: `RESULT: PASS -- all safety/liveness/ordering checks held, all coverage bins hit` 
 
-
-
 <img width="619" height="227" alt="Verification Output" src="https://github.com/user-attachments/assets/3543027e-e13f-4e3f-86ed-21b4ff4ddbf1" />
+<p><em>Verification testbench output: all safety/liveness/ordering checks passed, all coverage bins hit</em></p>
 
  [Verification output]
 
