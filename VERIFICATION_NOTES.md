@@ -63,3 +63,5 @@ iverilog -g2012 -gassertions -o tlc_tb.vvp traffic_light.v traffic_light_verif_t
 vvp tlc_tb.vvp
 ```
 Expected: `RESULT: PASS -- all safety/liveness/ordering checks held, all coverage bins hit`
+Output on terminal : 
+
