@@ -41,10 +41,11 @@ RED → GREEN → YELLOW → RED
 
 ## Files
 
-| File               | Description                                                |
-| ------------------ | ---------------------------------------------------------- |
-| traffic_light.v    | Verilog RTL implementation of the Traffic Light Controller |
-| traffic_light_tb.v | Testbench used for simulation and verification             |
+| File                      | Description                                                |
+| ------------------------- | ---------------------------------------------------------- |
+| traffic_light.v           | Verilog RTL implementation of the Traffic Light Controller |
+| traffic_light_tb.v        | Testbench used for simulation and verification             |
+| traffic_light_verif_tb.sv | Testbench used for self verification                       |
 
 ---
 
