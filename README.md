@@ -25,7 +25,8 @@ Moore FSM with a cycle counter, cycling RED → GREEN → YELLOW → RED. The st
 * **Parameters:** `RED_CYCLES`, `GREEN_CYCLES`, `YELLOW_CYCLES` (defaults 10 / 10 / 3).
 
 <div align = "center" >
-<img src="fsm_state_diagram.png" alt="Moore FSM state diagram: RED to GREEN to YELLOW to RED, with async reset into RED and illegal-state recovery to RED" width="420" />
+<img width="843" height="1682" alt="alt="Moore FSM state diagram: RED to GREEN to YELLOW to RED, with async reset into RED and illegal-state recovery to RED"" src="https://github.com/user-attachments/assets/b3b32cbc-c6f7-4f05-9e37-123dfa1bf22c" />
+
 <p><strong>State diagram. Solid dot = reset entry into RED; dashed arrow = illegal-state recovery.</strong></p>
 </div>
 
