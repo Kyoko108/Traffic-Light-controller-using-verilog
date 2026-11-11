@@ -2,7 +2,7 @@ SRC     = traffic_light.v
 BUILD   = build
 SEED   ?= 1
 
-.PHONY: sim verify mutate clean
+.PHONY: sim verify mutate lint synth clean
 
 sim: $(BUILD)/tlc_basic.vvp
 	vvp $<
@@ -14,6 +14,13 @@ verify: $(BUILD)/tlc_verif.vvp
 
 mutate:
 	python3 mutate.py
+
+lint:
+	verilator --lint-only -Wall $(SRC)
+
+synth: | $(BUILD)
+	yosys -q -p "read_verilog $(SRC); hierarchy -check -top traffic_light; proc; opt; check -assert; synth -top traffic_light; tee -o $(BUILD)/synth_stat.txt stat"
+	@grep -E "Number of cells|_DFF_" $(BUILD)/synth_stat.txt
 
 $(BUILD)/tlc_basic.vvp: $(SRC) traffic_light_tb.v | $(BUILD)
 	iverilog -g2012 -o $@ $^
