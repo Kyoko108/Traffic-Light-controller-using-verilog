@@ -38,6 +38,16 @@ Result: 13 / 13 caught. Mutants 5, 6, 7 and 8 are caught only by the reset and i
 
 Limit: the mutants were written by the same person who wrote the testbench, so this shows the testbench catches those 13 bugs, not every bug.
 
+## Lint, synthesis and netlist simulation
+
+Tools: Verilator 5.020, Yosys 0.33. Reproduce with `make lint` and `make synth`.
+
+- **Lint:** `verilator --lint-only -Wall traffic_light.v` is clean. Parameter overrides are linted too, for example `verilator --lint-only -Wall -GRED_CYCLES=17 -GGREEN_CYCLES=2 -GYELLOW_CYCLES=2 traffic_light.v`; the five override sets listed in the README are clean.
+- **Synthesis:** 45 generic cells, 7 flip-flops (3 state, 4 counter), no latches, structural `check -assert` passes. Yosys does not extract the state register as an FSM. Its stated reasons: the register is connected to module ports (the outputs), its users would not benefit from recoding, and the circuit seems self-resetting. Because the state is already one-hot, there is nothing for FSM recoding to improve.
+- **Netlist simulation:** write the netlist with `yosys -p "read_verilog traffic_light.v; synth -top traffic_light; write_verilog -noattr /tmp/synth_netlist.v"`. Remove the `#(...)` parameter overrides from the DUT instance in a copy of the testbench, since the netlist has no parameters, then compile the netlist with that copy. The copy reached 23 / 23 reset positions, 5 / 5 illegal-code recoveries and 0 errors. This is zero-delay simulation of a generic gate netlist, not a formal equivalence check.
+- **Other durations (ad hoc, not committed):** a pins-only run-length check passed on 10/10/3, 1/1/1, 5/7/2, 17/3/4, 2/2/2, 16/16/16 and 100/60/7. The main testbench's reference model assumes 10/10/3.
+- **Lint fix found while doing this:** with parameter overrides, Verilator reported `WIDTHTRUNC` on `GREEN_CYCLES - 1` narrowing into the counter-width register, though it was clean at the defaults. The terminal counts are now full-width localparams sliced to the counter width where used.
+
 ## Scope
 
 This is not UVM. A class-based environment would add structure without adding checking power for a 3-state FSM.
@@ -80,6 +90,7 @@ Design side (found in review, fixed in the current RTL):
 2. **Output glitch risk:** binary state encoding with a combinational decode flipped two bits on GREEN → YELLOW. Replaced by one-hot encoding with outputs wired straight from state flops.
 3. **Duplicated terminal count:** the 9 / 9 / 2 terminal counts appeared in two processes. Now computed once and shared.
 4. **Hardcoded durations:** replaced by parameters.
+5. **Width truncation under parameter overrides:** found by Verilator, fixed (see above).
 
 ## Run it
 
@@ -87,6 +98,8 @@ Design side (found in review, fixed in the current RTL):
 make verify              # self-checking testbench, SEED=1
 make verify SEED=42      # different random seed
 make mutate              # 13 injected bugs
+make lint                # Verilator
+make synth               # Yosys
 ```
 
 or directly:
