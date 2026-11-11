@@ -25,8 +25,7 @@ Moore FSM with a cycle counter, cycling RED → GREEN → YELLOW → RED. The st
 * **Parameters:** `RED_CYCLES`, `GREEN_CYCLES`, `YELLOW_CYCLES` (defaults 10 / 10 / 3).
 
 <div align = "center" >
-<img width="843" height="1682" alt="alt="Moore FSM state diagram: RED to GREEN to YELLOW to RED, with async reset into RED and illegal-state recovery to RED"" src="https://github.com/user-attachments/assets/b3b32cbc-c6f7-4f05-9e37-123dfa1bf22c" />
-
+<img src="fsm_state_diagram.png" alt="Moore FSM state diagram: RED to GREEN to YELLOW to RED, with async reset into RED and illegal-state recovery to RED" width="420" />
 <p><strong>State diagram. Solid dot = reset entry into RED; dashed arrow = illegal-state recovery.</strong></p>
 </div>
 
@@ -75,19 +74,21 @@ digraph traffic_light_fsm {
 | traffic_light_verif_tb.sv | Self-checking testbench: reference model, reset and fault injection, coverage       |
 | mutate.py                 | Injects 13 known bugs into the RTL and confirms the testbench fails on each         |
 | VERIFICATION_NOTES.md     | Scope, limitations, tool issues, bugs found                                         |
-| Makefile                  | `make sim`, `make verify [SEED=n]`, `make mutate`, `make clean`                     |
+| Makefile                  | `make sim`, `make verify [SEED=n]`, `make mutate`, `make lint`, `make synth`, `make clean` |
 
 ---
 
 ## Run
 
-Requires [Icarus Verilog](https://github.com/steveicarus/iverilog) (tested with 12.0) and `make`. `make mutate` also needs `python3`.
+Requires [Icarus Verilog](https://github.com/steveicarus/iverilog) (tested with 12.0) and `make`. `make mutate` also needs `python3`; `make lint` needs Verilator and `make synth` needs Yosys.
 
 ```
 make sim              # basic testbench
 make verify           # self-checking testbench (SEED=1)
 make verify SEED=42   # same, different random seed
 make mutate           # inject 13 bugs, expect all caught
+make lint             # Verilator --lint-only -Wall (needs Verilator)
+make synth            # Yosys generic synthesis + cell count (needs Yosys)
 ```
 
 `make verify` exits non-zero unless the testbench prints `RESULT: PASS`.
@@ -139,6 +140,14 @@ Design weaknesses found in review and fixed in the current RTL (illegal-state lo
 
 ---
 
+## Lint and synthesis
+
+* **Lint:** Verilator 5.020 `--lint-only -Wall` reports no warnings, at the default durations and with overrides (1/1/1, 1/2/5, 16/16/16, 17/2/2, 100/60/7).
+* **Synthesis:** Yosys 0.33 generic `synth` (no technology library): 45 cells, 7 flip-flops, no latches inferred, `check -assert` passes.
+* **Netlist simulation:** the synthesized netlist passes `traffic_light_verif_tb.sv` with the parameter overrides removed (the netlist has no parameters). This is a zero-delay simulation, not a formal equivalence proof. Steps are in [VERIFICATION_NOTES.md](VERIFICATION_NOTES.md).
+
+---
+
 ## Limitations
 
 * Reset deassertion is asynchronous (no reset synchronizer). Deassertion timing relative to `clk` is not tested; RTL simulation cannot show recovery/removal violations.
@@ -147,5 +156,5 @@ Design weaknesses found in review and fixed in the current RTL (illegal-state lo
 * The scoreboard is cycle-exact. A variant with registered (one-cycle-late) outputs would fail it unless the model is shifted to match.
 * The 13 mutants were chosen by the author of the testbench, so "all caught" is a floor, not proof of completeness.
 * No concurrent SystemVerilog assertions and no formal proofs (Icarus 12.0 rejects `assert property`).
-* Not synthesized or linted; no area or timing results.
+* Synthesis is generic (no technology library, no timing constraints): there are no area or timing numbers for a real process.
 * Single signal only, no sensor or pedestrian input.
