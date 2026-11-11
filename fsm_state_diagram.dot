@@ -1,0 +1,23 @@
+// Moore FSM, traffic_light.v. Render: dot -Tpng -Gdpi=150 fsm_state_diagram.dot -o fsm_state_diagram.png
+digraph traffic_light_fsm {
+    graph [rankdir=TB, labelloc=t, fontname="Helvetica-Bold", fontsize=20,
+           label="traffic_light FSM (Moore)\noutputs shown as R Y G", nodesep=1.1, ranksep=1.0, pad=0.4];
+    node  [fontname="Helvetica", fontsize=14, shape=circle, style=filled, penwidth=2, width=1.7, fixedsize=true];
+    edge  [fontname="Helvetica", fontsize=12, penwidth=1.6];
+
+    RED    [label="RED\nR=1 Y=0 G=0",    fillcolor="#ffd6d6", color="#b30000"];
+    GREEN  [label="GREEN\nR=0 Y=0 G=1",  fillcolor="#d6f5d6", color="#006600"];
+    YELLOW [label="YELLOW\nR=0 Y=1 G=0", fillcolor="#fff2b3", color="#b38600"];
+
+    start   [shape=point, width=0.15, label="", color=black];
+    illegal [shape=box, style="rounded,dashed", fixedsize=false, width=0, label="any illegal state\nencoding", color="#555555", fillcolor=white];
+
+    start   -> RED    [label=" rst\n (async, from any state)"];
+    illegal -> RED    [label=" next clock edge", style=dashed];
+
+    RED    -> GREEN  [label=" counter = 9\n (10 clocks)"];
+    GREEN  -> YELLOW [label=" counter = 9\n (10 clocks)"];
+    YELLOW -> RED    [label=" counter = 2\n (3 clocks)"];
+
+    {rank=same; start; illegal;}
+}
